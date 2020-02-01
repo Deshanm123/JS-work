@@ -1,0 +1,35 @@
+<html>
+    <body>
+        <script>
+        var day = new Date();
+        document.write(day +"<br>");
+       var digit_day = day.getDate();
+       // document.write(digit_day);
+       
+       var daysuffix;
+        switch(digit_day)
+        {
+            case 1:
+            case 21:
+            case 31:
+            daysuffix="st";
+            break;
+
+            case 2:
+            case 22:
+            daysuffix="nd";
+            break;
+
+            case 3:
+            daysuffix="rd";
+            break;
+
+            default:
+            daysuffix="th";
+            break;
+            }
+            document.write("Today is "+digit_day +daysuffix+" of this month");
+
+        </script>
+    </body>
+</html>
