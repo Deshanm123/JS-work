@@ -52,7 +52,7 @@ h2{
     display:block;
     width:100%;
     padding:10px;
-    font-color:14px;
+    font-size:14px;
 } 
 /* when selected a specific field it get highlighted from rest  */
 .form-control input:focus{
