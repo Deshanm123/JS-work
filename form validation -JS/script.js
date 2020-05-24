@@ -23,36 +23,64 @@ function isEmailValid(email){
        return re.test(String(email).toLowerCase());
     
 }
+//dsplay field 
+function getFieldName(input){
+    // return input.id.charAt(0);//return character at 0 index of the string
+    // return input.id.slice(1); //cut of the 1st letter in the string(we donot refer index)
+   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+   //show concatinated output
+}
+
+// check require function
+function checkRequired(inputArray){
+    inputArray.forEach(function(input){
+// trim removes white space,if not inputed whitespace is also show sucess
+       if(input.value.trim() === ""){
+           showError(input,`${getFieldName(input)} is required`);
+       }
+       else
+            showSuccess(input);
+    })
+} 
+function checkLength(input,min,max){
+    if (input.value<min){
+        showError(input,`${getFieldName(input)} must be at least ${min} characters long.`);
+    }
+    else if(input.value>max)
+        showError(input,`${getFieldName(input)} must be less than ${max} characters.`)
+    else
+        showSuccess(input);
+}
 //Event Listeners
 form.addEventListener('submit',function(e) {
     e.preventDefault();//prevent form submission and take over the process
    
-    if(userName.value === ""){
-        showError(userName,"User Name is Required");
-    }else{
-        showSuccess(userName);
-    }
+    // if(userName.value === ""){
+    //     showError(userName,"User Name is Required");
+    // }else{
+    //     showSuccess(userName);
+    // }
 
-    if (email.value ===""){
-        showError(email,"Email is Required");
-    }else if(!isEmailValid(email.value)){
-        showError(email,"Email is not Valid");
-    }
-    else{
-        showSuccess(email);
-    }
+    // if (email.value ===""){
+    //     showError(email,"Email is Required");
+    // }else if(!isEmailValid(email.value)){
+    //     showError(email,"Email is not Valid");
+    // }
+    // else{
+    //     showSuccess(email);
+    // }
 
-    if(password.value === ""){
-       showError(password,"Enter password");
-    }else{
-        showSuccess(password);
-    }
-    if(password2.value === ""){
-        showError(password2,"Enter Confirm password");
-    }else{
-        showSuccess(password2);
-    }
-    
-
+    // if(password.value === ""){
+    //    showError(password,"Enter password");
+    // }else{
+    //     showSuccess(password);
+    // }
+    // if(password2.value === ""){
+    //     showError(password2,"Enter Confirm password");
+    // }else{
+    //     showSuccess(password2);
+    // }
+    checkRequired([userName,email,password,password2]);  
+    checkLength(userName,4,10);
 
 });
